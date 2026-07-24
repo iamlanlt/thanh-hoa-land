@@ -2,21 +2,67 @@
   "name": "thanh-hoa-land",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build --webpack",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "prisma generate && tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:push": "prisma db push",
+    "db:seed": "tsx --env-file=.env.local prisma/seed.ts",
+    "db:clear-test-data": "tsx --env-file=.env.local prisma/clear-test-data.ts",
+    "db:clear-test-data:apply": "DRY_RUN=false tsx --env-file=.env.local prisma/clear-test-data.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "check": "npm run test && npm run lint && npm run build"
   },
   "dependencies": {
-    "next": "^16.2.10",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "@hookform/resolvers": "^5.4.0",
+    "@prisma/adapter-pg": "^7.9.0",
+    "@prisma/client": "^7.9.0",
+    "@radix-ui/react-alert-dialog": "^1.1.21",
+    "@radix-ui/react-dialog": "^1.1.21",
+    "@radix-ui/react-select": "^2.3.5",
+    "@radix-ui/react-slot": "^1.3.1",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@vercel/analytics": "^2.0.1",
+    "bcryptjs": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
+    "jose": "^6.2.4",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.26.0",
+    "next": "^16.2.11",
+    "pg": "^8.22.0",
+    "postcss": "^8.5.22",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-hook-form": "^7.82.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "tw-animate-css": "^1.4.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "typescript": "^5.8.0"
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^24.13.3",
+    "@types/pg": "^8.20.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "dotenv": "^17.4.2",
+    "prisma": "^7.9.0",
+    "tsx": "^4.23.1",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "find-my-way": "^9.7.0",
+    "postcss": "$postcss",
+    "sharp": "^0.35.3"
   }
 }

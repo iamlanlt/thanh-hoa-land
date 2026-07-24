@@ -1,0 +1,37 @@
+export type PublicProperty = {
+  id: string;
+  title: string;
+  slug: string;
+  shortDescription?: string | null;
+  description?: string | null;
+  location: string;
+  address?: string | null;
+  lat?: number | null;
+  lng?: number | null;
+  area: number | null;
+  price: string | null;
+  priceValue?: number | null;
+  priceUnit?: string | null;
+  type: string | null;
+  legalStatus?: string | null;
+  frontage?: number | null;
+  accessRoadWidth?: number | null;
+  direction?: string | null;
+  floors?: number | null;
+  bedrooms?: number | null;
+  bathrooms?: number | null;
+  furniture?: string | null;
+  coverImage?: string | null;
+  status: string;
+  featured: boolean;
+  published: boolean;
+  publishedAt: Date | string | null;
+  sortOrder: number;
+  images: Array<{
+    id: string;
+    url: string;
+    sortOrder: number;
+    alt?: string | null;
+  }>;
+  videoUrls?: string[];
+};
