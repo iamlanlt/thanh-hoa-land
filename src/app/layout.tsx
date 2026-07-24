@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { getPublicSettings } from "@/services/setting.service";
 import { siteConfig } from "@/lib/config";
 import { jsonLdScriptProps } from "@/lib/json-ld";
@@ -107,6 +108,7 @@ export default async function RootLayout({
       <body suppressHydrationWarning>
         {children}
         <Toaster richColors position="top-right" />
+        <Analytics />
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
             <Script
